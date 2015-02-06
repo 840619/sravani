@@ -1,0 +1,64 @@
+movies=Hash.new()
+movies["a"]=1
+movies["b"]=2
+movies["c"]=3
+
+puts "Would you like to add or update or delete a movie or display movies in the list?"
+puts"Enter 'add' to add a movie
+Enter 'update' to update movie rating
+Enter 'delete' to delete a movie
+Enter 'display' to display the list"
+
+mopt=gets.chomp
+
+if (mopt=="add")
+puts "Enter movie name to be added"
+mname=gets.chomp
+puts "movie " + mname
+     
+       if (movies.has_key?(mname))
+       puts "Movie Already exists"
+       else
+       puts "give movie rating"
+       mrating=gets.chomp
+       puts "rating " + mrating
+       movies[mname]=mrating
+       puts "Added Successfully"
+       end 
+
+
+movies.each do | movie,rating |
+puts "#{movie}:#{rating}"
+end
+
+elsif (mopt=="update")
+puts "Enter movie name to update its rating"
+mname=gets.chomp
+if(movies.has_key?(mname))
+       puts "Enter the new rating for the movie"
+       mr=gets.chomp
+       puts "new rating " + mr
+       movies[mname]=mr
+       puts "Updated Successfully"
+end
+movies.each do | movie,rating |
+puts "#{movie}:#{rating}"
+end
+
+elsif (mopt=="display")
+movies.each do | movie,rating |
+puts "#{movie}:#{rating}"
+end
+
+elsif (mopt=="delete")
+puts "Enter movie name to delete"
+mname=gets.chomp
+if(movies.has_key?(mname))
+       movies.delete(mname)
+       puts "Deleted Successfully"
+end
+movies.each do | movie,rating |
+puts "#{movie}:#{rating}"
+end
+
+end
